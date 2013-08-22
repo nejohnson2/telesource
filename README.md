@@ -1,8 +1,8 @@
 ## Node.js - Express - EJS - Bootstrap Template
 
-Boilerplate for ExpressJS
+Template for ExpressJS
 
-* Routes directory
+* Getting Started
 * Hogan-Express template engine (w/ layouts)
 * MongoDB (coming soon)
 
