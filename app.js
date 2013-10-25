@@ -13,16 +13,16 @@ app.configure(function(){
 	app.set('views', __dirname + '/views');
 	app.use(express.static(__dirname + '/public'));
 	
-    app.use(express.bodyParser()); //deals with incoming request objects - this is also sending warnings
+	app.use(express.bodyParser()); //deals with incoming request objects
 	app.use(express.methodOverride());
 	    
-    /**** Turn on some debugging tools ****/
-    app.use(express.logger()); // sends things into the terminal 
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));//dumpExceptions - directs exceptions to stderr - showStack - generate HTML for an exception å
+	/**** Turn on some debugging tools ****/
+	app.use(express.logger()); // sends messages into the terminal 
+	app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); //dumpExceptions - directs exceptions to stderr - showStack - generate HTML for an exception å
     
 });
 
-app.get('/',routes.main);
+app.get('/', routes.main);
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
