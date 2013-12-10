@@ -23,6 +23,8 @@ app.configure(function(){
 });
 
 app.get('/', routes.main);
+app.get('/input', routes.input);
+app.get('/tmsis', routes.tmsis);
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
