@@ -1,6 +1,6 @@
 ## Node.js - Coffeescript - Express - EJS - Bootstrap
 
-Make sure you have `OpenBTSCLI` in your path, which can be done by making a symlink in `~/bin`
+Make sure you have `OpenBTSCLI` in root's path, which can be done by making a symlink in `/usr/local/bin`
 
 ### Getting started w/ local development server
 
