@@ -22,6 +22,7 @@ app.configure ->
 app.get "/", routes.main
 app.get "/input", routes.input
 app.get "/tmsis", routes.tmsis
+app.get "/numbers", routes.numbers
 
 port = process.env.PORT or 5000
 app.listen port, ->

@@ -44,7 +44,7 @@ exports.tmsis = (req, res) ->
 #   GET /numbers
 #
 exports.numbers = (req, res) ->
-  command = "echo .dump dialdata_table | sqlite3 /var/lib/asterisk/sqlite3dir/sqlite3.db | grep VALUES | awk '{print $4}' | cut -d"'" -f2,4'
+  command = 'echo .dump dialdata_table | sqlite3 /var/lib/asterisk/sqlite3dir/sqlite3.db | grep VALUES | awk \'{print $4}\' | cut -d"\'" -f2,4'
   console.log command
   child = exec(command, (error, stdout, stderr) ->
     console.log "PHONE NUMBERS"
