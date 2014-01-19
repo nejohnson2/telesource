@@ -1,5 +1,5 @@
 var interval = setInterval(function(){
-  jQuery.ajax({
+  $.ajax({
       url: '/tmsis'
     , success: function (res) {
         $('#numbers li').remove();

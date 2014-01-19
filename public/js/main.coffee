@@ -1,5 +1,5 @@
 setInterval(->
-  jQuery.ajax
+  $.ajax
     url: "/tmsis"
     success: (res) ->
       $("#numbers li").remove()
