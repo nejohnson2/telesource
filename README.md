@@ -1,5 +1,7 @@
 ## Node.js - Coffeescript - Express - EJS - Bootstrap
 
+Make sure you have `OpenBTSCLI` in your path, which can be done by making a symlink in `~/bin`
+
 ### Getting started w/ local development server
 
 1) Clone this repo and navigate into the code directory with Terminal.
