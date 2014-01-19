@@ -6,7 +6,7 @@ setInterval(->
       for number in res.split '\n'
         if number?.length > 1
             [num,imsi] = number?.split "'"
-            $("#numbers").append "<li id=#{imsi}> #{num}"
+            $("#numbers").append "<li id=#{imsi}> #{num[...3]}-#{num[3...]} (#{imsi[4...]})"
       $.ajax
         url: "/tmsis"
         success: (res) ->
