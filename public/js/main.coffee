@@ -4,5 +4,6 @@ setInterval(->
     success: (res) ->
       $("#numbers li").remove()
       for number in res.split '\n'
-        $("#numbers").append "<li>IMSI: " + number + "</li>"
+        if number.length > 1
+            $("#numbers").append "<li> #{number}"
 , 10 * 1000)
