@@ -4,9 +4,14 @@ setInterval(->
     success: (res) ->
       $("#numbers li").remove()
       for number in res.split '\n'
-        if number?.length > 1
-            [num,imsi] = number?.split "'"
-            $("#numbers").append "<li id=#{imsi}> #{num[...3]}-#{num[3...]} (#{imsi[4...]})"
+        if number.length > 0
+          [num,imsi] = number?.split "'"
+          if num.length is 7
+            num = num[...3]+'-'+num[3...]
+          if num.length is 10
+            num = num[...3]+'-'+num[3...6]+'-'+num[6...]
+
+          $("#numbers").append "<li id=#{imsi}> #{num} (#{imsi[4...]})"
       $.ajax
         url: "/tmsis"
         success: (res) ->
