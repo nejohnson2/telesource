@@ -12,7 +12,7 @@ exports.main = (req, res) ->
 exports.input = (req, res) ->
   console.log req.query.message
   message = req.query.message
-  command = "echo tmsis | sudo ./OpenBTSCLI | grep -v TMSI | awk '{print $2}' | grep -v '^$' | grep -E \"[0-9]+\""
+  command = "echo tmsis | sudo OpenBTSCLI | grep -v TMSI | awk '{print $2}' | grep -v '^$' | grep -E \"[0-9]+\""
   child = exec(command, (error, stdout, stderr) ->
     console.log "exec error: #{error}" if error?
     list = stdout.split("\n")
@@ -33,7 +33,7 @@ exports.input = (req, res) ->
 #   GET /tmsis
 #
 exports.tmsis = (req, res) ->
-  command = "echo tmsis | sudo ./OpenBTSCLI | grep -v TMSI | awk '{print $2}' | grep -v '^$' | grep -E \"[0-9]+\""
+  command = "echo tmsis | sudo OpenBTSCLI | grep -v TMSI | awk '{print $2}' | grep -v '^$' | grep -E \"[0-9]+\""
   console.log command
   child = exec(command, (error, stdout, stderr) ->
     console.log "IMSI NUMBERS"
