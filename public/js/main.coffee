@@ -6,11 +6,11 @@ setInterval(->
       for number in res.split '\n'
         if number?.length > 1
             [num,imsi] = number?.split "'"
-            $("#numbers").append "<li id=#{imsi}> #{number}"
+            $("#numbers").append "<li id=#{imsi}> #{num}"
       $.ajax
         url: "/tmsis"
         success: (res) ->
           for imsi in res.split '\n'
             if imsi.length > 1
-                $("#IMSI"+imsi).class 'active'
+                $("#IMSI"+imsi).addClass 'active'
 , 10 * 1000)
