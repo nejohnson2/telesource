@@ -10,6 +10,7 @@ exports.main = (req, res) ->
 #   GET /input
 #
 exports.input = (req, res) ->
+  console.log "************  Sending SMS  ************"
   console.log req.query.message
   message = req.query.message
   command = "echo tmsis | sudo OpenBTSCLI | grep -v TMSI | awk '{print $2}' | grep -v '^$' | grep -E \"[0-9]+\""
@@ -50,3 +51,15 @@ exports.numbers = (req, res) ->
     console.log "PHONE NUMBERS"
     res.send stdout
   )
+  
+#
+#	GET /cellid
+#
+exports.cellid = (req, res) ->
+  command = 'echo cellid | sudo OpenBTSCLI | '
+  console.log command
+  child = exec(command, (error, stdout, stderr) ->
+    console.log "CellID Information"
+    res.send stdout
+  )
+  

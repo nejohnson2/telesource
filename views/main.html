@@ -1,10 +1,31 @@
 <div class="container">
 	<h2>Tele-source Server</h2>
 	<p>UNICEF Build</p>
-	<form method="get" action="/input">
+	<form id="form" method="POST">
 	 <div><input placeholder="insert message here" name="message" type="text" maxlength="120" /><span class="num">120</span></div>
 	  <div><button id="mainButton" type="submit">send message </button></div>
 	</form>  
+</form>
   <h2> IMSI Numbers </h2>
   <ul id="numbers"></ul>
+  <div id="cellid"></div>
 </div>
+
+<script>
+$(document).ready(function() {
+	console.log("Document Reday - getting cellid");
+	$.get('/cellid', $(this).serialize(), function(d){
+	  console.log("cellid - " + d);
+	  $("#cellid").append("<p>" + d + "</p>");
+	});
+});
+
+$("#form").submit(function (e) {
+	console.log("**** hello from ajax *****");
+e.preventDefault();
+
+	$.get('/input', $(this).serialize(), function(d){
+	   console.log("at input");
+	});
+});
+</script>

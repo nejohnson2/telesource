@@ -19,3 +19,5 @@ setInterval(->
             if imsi.length > 1
                 $("#IMSI"+imsi).addClass 'active'
 , 10 * 1000)
+
+		
