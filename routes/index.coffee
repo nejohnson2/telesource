@@ -10,19 +10,22 @@ exports.main = (req, res) ->
 #   GET /input
 #
 exports.input = (req, res) ->
-  console.log "************  Sending SMS  ************"
-  console.log req.query.message
+  console.log "************  Sending SMS  ************".grey
+  console.log " "
+  console.log req.query.message.white
+  console.log " "
+  console.log "***************************************".grey
   message = req.query.message
   command = "echo tmsis | sudo OpenBTSCLI | grep -v TMSI | awk '{print $2}' | grep -v '^$' | grep -E \"[0-9]+\""
   child = exec(command, (error, stdout, stderr) ->
-    console.log "exec error: #{error}" if error?
+    console.log "exec error: #{error}".red if error?
     list = stdout.split("\n")
     i = 0
 
     while i < list.length - 1
       unless list[i] is ""
         newCommand = "echo sendsms " + list[i] + " 0 " + message + " | sudo OpenBTSCLI"
-        console.log newCommand
+        console.log newCommand.yellow
         newChild = exec(newCommand, (error, stdout, stderr) ->
           console.log "New Child exec error: " + error  if error?
         )
@@ -35,9 +38,9 @@ exports.input = (req, res) ->
 #
 exports.tmsis = (req, res) ->
   command = "echo tmsis | sudo OpenBTSCLI | grep -v TMSI | awk '{print $2}' | grep -v '^$' | grep -E \"[0-9]+\""
-  console.log command
+  console.log command.yellow
   child = exec(command, (error, stdout, stderr) ->
-    console.log "IMSI NUMBERS"
+    console.log "IMSI NUMBERS".grey
     res.send stdout
   )
 
@@ -46,9 +49,9 @@ exports.tmsis = (req, res) ->
 #
 exports.numbers = (req, res) ->
   command = 'echo .dump dialdata_table | sqlite3 /var/lib/asterisk/sqlite3dir/sqlite3.db | grep VALUES | awk \'{print $4}\' | cut -d"\'" -f2,4'
-  console.log command
+  console.log command.yellow
   child = exec(command, (error, stdout, stderr) ->
-    console.log "PHONE NUMBERS"
+    console.log "PHONE NUMBERS".grey
     res.send stdout
   )
   
@@ -56,10 +59,10 @@ exports.numbers = (req, res) ->
 #	GET /cellid
 #
 exports.cellid = (req, res) ->
-  command = 'echo cellid | sudo OpenBTSCLI | '
-  console.log command
+  command = 'echo cellid | sudo OpenBTSCLI'
+  console.log command.yellow
   child = exec(command, (error, stdout, stderr) ->
-    console.log "CellID Information"
+    console.log "CellID Information".grey
     res.send stdout
   )
   

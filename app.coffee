@@ -3,6 +3,7 @@ partials = require "express-partials"
 express = require "express"
 app = express()
 routes = require "./routes/index"
+colors = require "colors"
 
 app.configure ->
   app.use partials()

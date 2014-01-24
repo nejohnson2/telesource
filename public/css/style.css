@@ -4,6 +4,7 @@
 html,
 body {
 	height: 100%;
+	background-color: #eeeeee;
   /* The html and body elements cannot have any padding or margin. */
 }
 
@@ -16,6 +17,7 @@ body {
 	margin: 0 auto -60px;
 	/* Pad bottom by footer height */
 	padding: 0 0 60px;
+
 }
 
 /* Set the fixed height of the footer here */
@@ -30,4 +32,38 @@ body {
 
 .active {
 	color: green;
+}
+#form {
+	padding-top: 20px;
+	text-align: center;
+}
+#mainButton {
+	
+}
+#header {
+	padding-left: 20px;
+	margin-top: 20px;
+}
+#imsi {
+	text-align: center;
+}
+#imsi h3 {
+	padding-bottom: 20px;
+}
+hr { 
+	display: block; 
+	height: 1px;
+    border: 0; 
+    border-top: 1px solid #ccc;
+    margin: 1em 0; 
+    padding: 0; 
+}
+#inputForm {
+	width: 300px;
+}
+#cellid {
+	
+}
+#cellid ul {
+	list-style-type: none;
 }
