@@ -59,7 +59,7 @@ exports.numbers = (req, res) ->
 #	GET /cellid
 #
 exports.cellid = (req, res) ->
-  command = 'echo cellid | sudo OpenBTSCLI'
+  command = 'echo cellid | sudo OpenBTSCLI | grep -A 0 \'MNC\''
   console.log command.yellow
   child = exec(command, (error, stdout, stderr) ->
     console.log "CellID Information".grey
