@@ -24,7 +24,7 @@ exports.input = (req, res) ->
 
     while i < list.length - 1
       unless list[i] is ""
-        newCommand = "echo sendsms " + list[i] + " 0 " + message + " | sudo OpenBTSCLI"
+        newCommand = "echo sendsms " + list[i] + " 101 " + message + " | sudo OpenBTSCLI"
         console.log newCommand.yellow
         newChild = exec(newCommand, (error, stdout, stderr) ->
           console.log "New Child exec error: " + error  if error?
