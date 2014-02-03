@@ -1,42 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-	    <meta charset="utf-8">
-	    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-        <title>
-        	Telesource
-        </title>
-        
-   	    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
-   	    <link href="css/style.css" rel="stylesheet">
-        
-        <script src=/js/jquery-2.0.3.min.js></script>
-        <script src=/js/main.js></script>
-    </head>
-    <body>  	
-		<div class="container">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Telesource</title>
 
-			<div class="navbar navbar-inverse">
-				<ul class="nav navbar-nav">
-					<li><a href="/" class="navbar-brand">Tele-source Server</a></li>
-				</ul>
-				<ul class="nav navbar-nav pull-right">
-					<li><a href="/">About</a></li>
-					<li><a href="/">Contact</a></li>
-				</ul>
-			</div>
-		</div>    
-		<div id="wrap">
-			<div class="container">
-				<%- body %>
-			</div>
-		</div>
-		
-		<div id="footer">
-			<div class="container">
-				<p>&copy; Template &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-			</div>
-		</div>
-		
-    </body>    
-</html>
+<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+<link href="css/style.css" rel="stylesheet">
+<link href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" rel="stylesheet" media="screen"/>
+
+<script src=/js/jquery-2.0.3.min.js></script>
+<script src=js/openbts.js></script>
+<script src=/js/main.js></script>
+
+<body>
+
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+
+<div class="navbar navbar-inverse">
+    <ul class="nav navbar-nav">
+        <li><a href="/" class="navbar-brand">Tele-source Server</a></li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+        <li><a href="/">About</a></li>
+        <li><a href="/">Contact</a></li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-5" id="imsi">
+            <h3>Connected phones <small>IMSI numbers</small></h3>
+            <table class="table table-striped" id="numbers">
+            </table>
+        </div>
+
+        <div class="col-5">
+            <h3>Send a message <small>140 character maximum</small></h3>
+            <form role="form" method="POST">
+                <div class="form-group">
+                    <input type="text" id="message" placeholder="message" maxlength="140" autocomplete="off" />
+                    <input type="text" class="num" id="latlng" readonly></label>
+                    <label for="message" class="num" id="num">140</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-xs">send</button>
+            </form>             
+        </div>
+        
+        <div class="col-2" id="cellid">
+            <h3>Tower info <small> Cell ID</small></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Add GPS to message <small>Click to place gps marker</small></h3>
+            <div id="map" class="center-block"></div>
+        </div>
+    </div>
+</div>
+
+
+<div id="footer">
+	<div class="container">
+		<p>&copy; Template &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+	</div>
+</div>
