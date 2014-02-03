@@ -33,7 +33,7 @@ $(document).ready ->
     lat = e.latlng.lat.toFixed(4)
     lng = e.latlng.lng.toFixed(4)
     latlng = "(#{lat},#{lng})"
-    $('#latlng').text(latlng)
+    $('#latlng').val(latlng)
     
     popup
       .setLatLng e.latlng

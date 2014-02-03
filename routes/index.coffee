@@ -12,10 +12,10 @@ exports.main = (req, res) ->
 exports.input = (req, res) ->
   console.log "************  Sending SMS  ************".grey
   console.log " "
-  console.log req.query.message.white
+  console.log req.query.message.white + req.query.latlng.white
   console.log " "
   console.log "***************************************".grey
-  message = req.query.message
+  message = req.query.message + req.query.latlng
   command = "echo tmsis | sudo OpenBTSCLI | grep -v TMSI | awk '{print $2}' | grep -v '^$' | grep -E \"[0-9]+\""
   child = exec(command, (error, stdout, stderr) ->
     console.log "exec error: #{error}".red if error?
