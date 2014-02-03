@@ -1,91 +1,58 @@
-<div class="container">
+<script src=js/openbts.js></script>
+<link href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 
-	<div class="row">
-		<div class="col-6" id="imsi">
-			<h3> IMSI Numbers </h3>
-			<hr>
-			<ul id="numbers"></ul>
-		</div>
+<div class="row">
+	<div class="col-md-6" id="imsi">
+		<h3> IMSI Numbers</h3>
+		<hr>
+		<ul id="numbers"></ul>
+	</div>
+	<form role="form">
+	<div class="col-md-5">
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputFile">File input</label>
+	    <input type="file" id="exampleInputFile">
+	    <p class="help-block">Example block-level help text here.</p>
+	  </div>
+	  <div class="checkbox">
+	    <label>
+	      <input type="checkbox"> Check me out
+	    </label>
+	  </div>
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+	</div>
+	<div class="col-md-6" style="border-left: 1px solid black;">
+		<form id="form" method="POST">
+			<input id="inputForm" placeholder="insert message here" name="message" type="text" maxlength="160" autocomplete = "off" />
+			<button id="mainButton" type="submit">send message </button>
+			<span class="num">160</span>
+		</form>  			
 		
-		<div class="col-6" style="border-left: 1px solid black;">
-			<form id="form" method="POST">
-				<input id="inputForm" placeholder="insert message here" name="message" type="text" maxlength="160" autocomplete = "off" />
-				<button id="mainButton" type="submit">send message </button>
-				<span class="num">160</span>
-			</form>  			
-			
-			<br>
-			<hr>
+		<br>
+		<hr>
 
-			<div id="cellid">
-				<h3>Cell ID</h3>
+		<div id="cellid">
+			<h3>Cell ID</h3>
 <!--
-				<ul id="cellidInfo">
-					<li>ARFCN:</li> 
-					<li>MCC:</li>
-					<li>MNC:</li>
-					<li>LAC:</li>
-				</ul>
+			<ul id="cellidInfo">
+				<li>ARFCN:</li> 
+				<li>MCC:</li>
+				<li>MNC:</li>
+				<li>LAC:</li>
+			</ul>
 -->
 
-			</div>
-			<hr>
 		</div>
+		<hr>
 	</div>
-
 </div>
-
-<script>
-$(document).ready(function() {
-
-	console.log("*** Document Reday ***");
-
-	$.get('/cellid', $(this).serialize(), function(d){
-	  console.log("Cellid - " + d);
-	  $("#cellid").append("<p>" + d + "</p>");
-	});
-	
-	$(this).find('input').val('');
-	/******  This is to show how many characters have been typed  ******/
-	var keyHandler = function (e) {
-	    var len = this.value.length;
-	    var left = 160 - len;
-	    if (left < 10) left = "&nbsp;&nbsp;"+left;
-	    // pad to keep the width the same, total hack
-	    
-	    $(this).nextAll(".num").html(left);
-	    
-	    var anyEmpty = $("input").is(function () {
-	      return this.value.length === 0;
-	    })
-	    
-	    if (!anyEmpty) {
-	      $("button").addClass("complete");
-	    } else {
-	      $("button").removeClass("complete");
-	    }
-    };
-	$("input").keydown(keyHandler);
-	$("input").keypress(keyHandler);
-	$("input").keyup(keyHandler);	
-});
-
-
-
-$("#form").submit(function (e) {
-	console.log("**** Form has been submitted *****");
-	e.preventDefault();
-
-	$.get('/input', $(this).serialize(), function(d){
-	   console.log("*** Making GET request to \"/input\" ***");
-	});
-});
-
-$("input").keypress(function(event) {
-    if (event.which == 13) {
-        event.preventDefault();
-        $("form").submit();
-        $("form")[0].reset();
-    }
-});
-</script>
