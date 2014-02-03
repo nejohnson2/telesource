@@ -2,7 +2,7 @@ setInterval(->
   $.ajax
     url: "/numbers"
     success: (res) ->
-      $("#numbers tr").remove()
+      $(".number").remove()
       for number in res.split '\n'
         if number.length > 0
           [num,imsi] = number?.split "'"
@@ -11,7 +11,7 @@ setInterval(->
           if num.length is 10
             num = num[...3]+'-'+num[3...6]+'-'+num[6...]
 
-          $("#numbers").append "<tr><td class=num>#{num}</td><td class=imsi>#{imsi[4...]}</td></tr>"
+          $("#numbers").append "<tr class=number><td class=num>#{num}</td><td class=imsi>#{imsi[4...]}</td></tr>"
       $.ajax
         url: "/tmsis"
         success: (res) ->

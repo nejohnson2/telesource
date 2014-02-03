@@ -30,7 +30,10 @@
         <div class="col-5" id="imsi">
             <h3>Connected phones <small>IMSI numbers</small></h3>
             <table class="table table-striped" id="numbers">
-            </table>
+                <thead><tr>
+                    <td> Number
+                    <td> IMSI
+                </table>
         </div>
 
         <div class="col-5">
@@ -38,7 +41,7 @@
             <form role="form" method="POST">
                 <div class="form-group">
                     <input type="text" id="message" placeholder="message" maxlength="140" autocomplete="off" />
-                    <input type="text" class="num" id="latlng" readonly></label>
+                    <input type="text" id="latlng" placeholder="(gps coordinates)" class="num" readonly disabled></label>
                     <label for="message" class="num" id="num">140</label>
                 </div>
                 <button type="submit" class="btn btn-primary btn-xs">send</button>
