@@ -69,3 +69,4 @@ hr {
 	list-style-type: none;
 }
 #map { width: 100%; height: 500px;}
+thead > tr > td { font-weight: bold; }
